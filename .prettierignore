@@ -1,0 +1,8 @@
+# Ignore files that eslint manages
+*.tsx
+*.ts
+*.jsx
+*.js
+
+dist/*
+node_modules/*
