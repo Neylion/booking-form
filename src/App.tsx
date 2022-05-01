@@ -77,18 +77,31 @@ const DateInput = ({ label, fieldConfig, disabled, defaultVal, errors }: DateInp
   const error = errors?.[fieldConfig.name]?.message || (!inputValue && 'Required');
 
   return (
+    <InputLayout label={label} error={error}>
+      <input
+        className="basis-2/3 h-full rounded-r-sm px-2 disabled:bg-red-500 transition-all" 
+        type="text"
+        {...fieldConfig}
+        disabled={disabled}
+        value={inputValue}
+        onChange={(e) => setInputValue(e.target.value)}
+      />
+    </InputLayout>
+  );
+};
+
+interface InputLayoutProps {
+  label: string;
+  error?: any;
+  children?: any;
+}
+const InputLayout = ({ label, children, error }: InputLayoutProps) => {
+  return (
     <div className="w-full flex flex-col">
       {error && <p className={'flex-1 text-red-400 pb-1 text-sm'}>{error}</p>}
       <div className="w-full flex">
         <span className={`basis-1/3 ${error ? 'bg-red-200' : 'bg-secondary-100'} rounded-l-sm p-2 text-center text-sm`}>{label}</span>
-        <input
-          className="basis-2/3 h-full rounded-r-sm px-2 disabled:bg-red-500 transition-all" 
-          type="text"
-          {...fieldConfig}
-          disabled={disabled}
-          value={inputValue}
-          onChange={(e) => setInputValue(e.target.value)}
-        />
+        {children}
       </div>
     </div>
   );
