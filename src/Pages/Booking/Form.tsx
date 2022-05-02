@@ -5,9 +5,17 @@ import { dateStringHasValidFormat } from '../../utils/dates';
 import DateInput from './DateInput';
 import TypeInput from './TypeInput';
 
-const Form = () => {
-  const { register, handleSubmit, trigger, getValues, setValue, formState: { errors } } = useForm({ mode: 'onBlur', reValidateMode: 'onBlur' });
-  const onSubmit = (data: any) => console.log(data);
+export interface SubmitData {
+  ticketType: string;
+  departureDate: string;
+  returnDate: string;
+}
+
+interface FormProps {
+  onSubmit: (data: SubmitData) => void;
+}
+const Form = ({ onSubmit }: FormProps) => {
+  const { register, handleSubmit, trigger, getValues, setValue, formState: { errors } } = useForm<SubmitData>({ mode: 'onBlur', reValidateMode: 'onBlur' });
 
   const ticketType = getValues('ticketType');
   const departureDate = getValues('departureDate');
