@@ -4,6 +4,7 @@
 
 html {
   font-size: calc(0.5em + 1vw);
+  background-color: rgb(31 41 55);
 }
 
 body {
