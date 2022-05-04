@@ -25,7 +25,7 @@ const TypeInput = ({ label, fieldConfig, disabled, value, setValue, errors }: Ty
   };
 
   return (
-    <InputLayout label={label} error={error}>
+    <InputLayout name={fieldConfig.name} label={label} error={error}>
       <div 
         ref={ref}
         className="basis-2/3"
@@ -35,6 +35,7 @@ const TypeInput = ({ label, fieldConfig, disabled, value, setValue, errors }: Ty
           onClick={() => setShowDropdown((prev) => !prev)}
         >
           <input
+            id={fieldConfig.name}
             className="inline-flex w-10/12 h-full px-2 cursor-pointer text-left focus:outline-1 select-none" 
             type="button"
             {...fieldConfig}

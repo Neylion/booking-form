@@ -16,8 +16,9 @@ const DateInput = ({ label, fieldConfig, defaultVal, errors }: DateInputProps) =
   const errorMessage = error && (error.message || ERROR_MESSAGES.INVALID_DATE);
 
   return (
-    <InputLayout label={label} error={errorMessage} disabled={fieldConfig.disabled}>
+    <InputLayout name={fieldConfig.name} label={label} error={errorMessage} disabled={fieldConfig.disabled}>
       <input
+        id={fieldConfig.name}
         className="basis-2/3 h-full rounded-r-sm px-2 bg-inherit disabled:cursor-not-allowed" 
         type="text"
         {...fieldConfig}
